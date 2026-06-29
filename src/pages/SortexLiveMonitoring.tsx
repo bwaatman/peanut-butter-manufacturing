@@ -25,7 +25,7 @@ export default function SortexLiveMonitoring() {
   }, [batchId])
 
   useEffect(() => {
-    let interval: NodeJS.Timeout
+    let interval: ReturnType<typeof setInterval>
     if (autoRefresh && batchId) {
       interval = setInterval(() => {
         loadHourlyRecords()

@@ -10,7 +10,6 @@ import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '.
 import { StatusBadge } from '../components/ui/StatusBadge'
 import { LoadingState } from '../components/ui/LoadingState'
 import { EmptyState } from '../components/ui/EmptyState'
-import { Alert } from '../components/ui/Alert'
 
 export default function BatchManagement() {
   const [batches, setBatches] = useState<Batch[]>([])

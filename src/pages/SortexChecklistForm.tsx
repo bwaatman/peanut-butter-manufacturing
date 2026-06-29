@@ -77,6 +77,7 @@ export default function SortexChecklistForm() {
       analyst_name: formData.analyst_name || null,
       analyst_signature: formData.analyst_signature || null,
       signed_date: formData.signed_date || null,
+      created_by: 'System',
     }
 
     const { error } = await createSortexHourlyRecord(data)
