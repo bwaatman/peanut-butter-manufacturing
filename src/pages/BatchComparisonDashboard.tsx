@@ -3,6 +3,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import { getBatchComparisonData, getAllBatchesForComparison } from '../services/qualityMonitoring'
 import type { BatchComparisonData } from '../types/database'
 import { LoadingState } from '../components/ui/LoadingState'
+import { Printer } from 'lucide-react'
 
 export default function BatchComparisonDashboard() {
   const [allBatches, setAllBatches] = useState<any[]>([])
@@ -69,9 +70,18 @@ export default function BatchComparisonDashboard() {
   return (
     <div className="max-w-7xl mx-auto p-6">
       {/* Header */}
-      <div className="mb-6 border-b-2 border-gray-400 pb-4">
-        <h1 className="text-2xl font-bold text-gray-900 uppercase">Batch Quality Comparison</h1>
-        <p className="text-sm text-gray-600 mt-1">Compare quality parameters across batches</p>
+      <div className="mb-6 border-b-2 border-gray-400 pb-4 flex justify-between items-start">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900 uppercase">Batch Quality Comparison</h1>
+          <p className="text-sm text-gray-600 mt-1">Compare quality parameters across batches</p>
+        </div>
+        <button
+          onClick={() => window.print()}
+          className="flex items-center space-x-1 text-sm text-blue-600 hover:text-blue-800 print:hidden"
+        >
+          <Printer className="w-4 h-4" />
+          <span>Print</span>
+        </button>
       </div>
 
       {/* Controls */}

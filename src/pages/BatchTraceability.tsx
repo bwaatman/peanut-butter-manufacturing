@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getBatchTraceability } from '../services/traceability'
 import type { BatchTraceability as BatchTraceabilityType } from '../services/traceability'
-import { ArrowLeft, ClipboardList, Thermometer, CheckCircle, Package, ChevronRight } from 'lucide-react'
+import { ArrowLeft, ClipboardList, Thermometer, CheckCircle, Package, ChevronRight, Printer } from 'lucide-react'
 import { Card, CardHeader, CardContent, CardTitle } from '../components/ui/Card'
 import { Button } from '../components/ui/Button'
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '../components/ui/Table'
@@ -95,15 +95,24 @@ export default function BatchTraceability() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center space-x-4">
-        <Button
-          variant="outline"
-          onClick={() => navigate('/batches')}
-          className="flex items-center"
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-4">
+          <Button
+            variant="outline"
+            onClick={() => navigate('/batches')}
+            className="flex items-center"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Batches
+          </Button>
+        </div>
+        <button
+          onClick={() => window.print()}
+          className="flex items-center space-x-1 text-sm text-blue-600 hover:text-blue-800 print:hidden"
         >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Batches
-        </Button>
+          <Printer className="w-4 h-4" />
+          <span>Print</span>
+        </button>
       </div>
 
       <div>

@@ -5,6 +5,7 @@ import type { SortexWeeklySummary } from '../types/database'
 import { LoadingState } from '../components/ui/LoadingState'
 import { Alert } from '../components/ui/Alert'
 import { Button } from '../components/ui/Button'
+import { Printer } from 'lucide-react'
 
 export default function WeeklySortexSummary() {
   const [weeklyData, setWeeklyData] = useState<SortexWeeklySummary[]>([])
@@ -49,9 +50,18 @@ export default function WeeklySortexSummary() {
   return (
     <div className="max-w-7xl mx-auto p-6">
       {/* Header */}
-      <div className="mb-6 border-b-2 border-gray-400 pb-4">
-        <h1 className="text-2xl font-bold text-gray-900 uppercase">Weekly Summary / Batch Info</h1>
-        <p className="text-sm text-gray-600 mt-1">Auto-calculated from Daily Summary data</p>
+      <div className="mb-6 border-b-2 border-gray-400 pb-4 flex justify-between items-start">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900 uppercase">Weekly Summary / Batch Info</h1>
+          <p className="text-sm text-gray-600 mt-1">Auto-calculated from Daily Summary data</p>
+        </div>
+        <button
+          onClick={() => window.print()}
+          className="flex items-center space-x-1 text-sm text-blue-600 hover:text-blue-800 print:hidden"
+        >
+          <Printer className="w-4 h-4" />
+          <span>Print</span>
+        </button>
       </div>
 
       {/* Alert Message */}

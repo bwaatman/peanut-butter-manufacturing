@@ -6,6 +6,7 @@ import type { Batch, IncomingReceipt } from '../types/database'
 import { Button } from '../components/ui/Button'
 import { LoadingState } from '../components/ui/LoadingState'
 import { Alert } from '../components/ui/Alert'
+import { Printer } from 'lucide-react'
 
 export default function IncomingReceiptForm() {
   const { batchId } = useParams<{ batchId: string }>()
@@ -222,6 +223,13 @@ export default function IncomingReceiptForm() {
               <div className="font-semibold">ISSUE DATE: SEPT 2025</div>
               <div className="font-semibold">REV. NO. 00</div>
               <div className="font-semibold">TAF/QC/R-0028</div>
+              <button
+                onClick={() => window.print()}
+                className="mt-2 flex items-center space-x-1 text-sm text-blue-600 hover:text-blue-800 print:hidden"
+              >
+                <Printer className="w-4 h-4" />
+                <span>Print</span>
+              </button>
             </div>
           </div>
         </div>

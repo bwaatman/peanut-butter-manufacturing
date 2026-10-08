@@ -9,6 +9,7 @@ import Input from '../components/ui/Input'
 import Select from '../components/ui/Select'
 import { LoadingState } from '../components/ui/LoadingState'
 import { Alert } from '../components/ui/Alert'
+import { Printer } from 'lucide-react'
 
 export default function FinishedGoodsForm() {
   const { batchId } = useParams<{ batchId: string }>()
@@ -96,9 +97,18 @@ export default function FinishedGoodsForm() {
   return (
     <div className="max-w-3xl mx-auto">
       {/* Header */}
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Finished Goods Form</h1>
-        <p className="mt-1 text-sm text-gray-500">Batch: {batch.batch_no}</p>
+      <div className="mb-6 flex justify-between items-start">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900">Finished Goods Form</h1>
+          <p className="mt-1 text-sm text-gray-500">Batch: {batch.batch_no}</p>
+        </div>
+        <button
+          onClick={() => window.print()}
+          className="flex items-center space-x-1 text-sm text-blue-600 hover:text-blue-800 print:hidden"
+        >
+          <Printer className="w-4 h-4" />
+          <span>Print</span>
+        </button>
       </div>
 
       {/* Professional Clean Form */}

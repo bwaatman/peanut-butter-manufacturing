@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getBatches } from '../services/batches'
 import type { Batch } from '../types/database'
-import { Package, Clock, CheckCircle, ArrowDown } from 'lucide-react'
+import { Package, Clock, CheckCircle, ArrowDown, Printer } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Card, CardHeader, CardContent, CardTitle } from '../components/ui/Card'
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '../components/ui/Table'
@@ -153,12 +153,21 @@ export default function Dashboard() {
         <CardHeader>
           <div className="flex justify-between items-center">
             <CardTitle>Recent Batches</CardTitle>
-            <Link
-              to="/batches"
-              className="text-primary-700 hover:text-primary-800 text-sm font-medium"
-            >
-              View All →
-            </Link>
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={() => window.print()}
+                className="flex items-center space-x-1 text-sm text-blue-600 hover:text-blue-800 print:hidden"
+              >
+                <Printer className="w-4 h-4" />
+                <span>Print</span>
+              </button>
+              <Link
+                to="/batches"
+                className="text-primary-700 hover:text-primary-800 text-sm font-medium"
+              >
+                View All →
+              </Link>
+            </div>
           </div>
         </CardHeader>
         <CardContent>

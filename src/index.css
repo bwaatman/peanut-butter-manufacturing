@@ -10,3 +10,26 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@media print {
+  .print\:hidden {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+  }
+
+  button, input[type="button"], input[type="submit"] {
+    display: none !important;
+  }
+
+  a[href] {
+    text-decoration: none;
+    color: black;
+  }
+
+  @page {
+    margin: 1cm;
+  }
+}

@@ -3,6 +3,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 import { getManagerDashboardSummary, getQualityOverviewMetrics, getIncomingMaterialComparison, getSortexBatchProgress, getRoastingTemperatureProfile } from '../services/qualityMonitoring'
 import { LoadingState } from '../components/ui/LoadingState'
 import { Alert } from '../components/ui/Alert'
+import { Printer } from 'lucide-react'
 
 export default function ManagerDashboard() {
   const [dashboardData, setDashboardData] = useState<any>(null)
@@ -52,9 +53,18 @@ export default function ManagerDashboard() {
   return (
     <div className="max-w-7xl mx-auto p-6">
       {/* Header */}
-      <div className="mb-6 border-b-2 border-gray-400 pb-4">
-        <h1 className="text-2xl font-bold text-gray-900 uppercase">Manager Quality Oversight Dashboard</h1>
-        <p className="text-sm text-gray-600 mt-1">Production quality visibility and accountability</p>
+      <div className="mb-6 border-b-2 border-gray-400 pb-4 flex justify-between items-start">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900 uppercase">Manager Quality Oversight Dashboard</h1>
+          <p className="text-sm text-gray-600 mt-1">Production quality visibility and accountability</p>
+        </div>
+        <button
+          onClick={() => window.print()}
+          className="flex items-center space-x-1 text-sm text-blue-600 hover:text-blue-800 print:hidden"
+        >
+          <Printer className="w-4 h-4" />
+          <span>Print</span>
+        </button>
       </div>
 
       {/* SECTION 1: Quality Overview */}
@@ -233,7 +243,7 @@ export default function ManagerDashboard() {
                 <LineChart data={roastingProfile.slice(0, 50)}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#ccc" />
                   <XAxis dataKey="form_date" stroke="#666" fontSize={12} />
-                  <YAxis stroke="#666" fontSize={12} domain={[130, 240]} />
+                  <YAxis stroke="#666" fontSize={12} domain={[170, 185]} />
                   <Tooltip />
                   <Legend />
                   <Line type="monotone" dataKey="temperature" stroke="#dc2626" strokeWidth={2} name="Temperature (°C)" dot={{ r: 4 }} />

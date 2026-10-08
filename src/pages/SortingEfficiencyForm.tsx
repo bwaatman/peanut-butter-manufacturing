@@ -6,6 +6,7 @@ import type { Batch, SortingEfficiencyForm } from '../types/database'
 import { Button } from '../components/ui/Button'
 import { LoadingState } from '../components/ui/LoadingState'
 import { Alert } from '../components/ui/Alert'
+import { Printer } from 'lucide-react'
 
 export default function SortingEfficiencyForm() {
   const { batchId } = useParams<{ batchId: string }>()
@@ -156,6 +157,13 @@ export default function SortingEfficiencyForm() {
                 />
               </div>
             </div>
+            <button
+              onClick={() => window.print()}
+              className="flex items-center space-x-1 text-sm text-blue-600 hover:text-blue-800 print:hidden"
+            >
+              <Printer className="w-4 h-4" />
+              <span>Print</span>
+            </button>
           </div>
 
           {/* SECTION 2: BATCH DETAILS */}

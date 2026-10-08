@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar } from 'recharts'
 import { getOverallQualityOverview } from '../services/qualityMonitoring'
 import { LoadingState } from '../components/ui/LoadingState'
+import { Printer } from 'lucide-react'
 
 export default function OverallQualityOverview() {
   const [overviewData, setOverviewData] = useState<any>(null)
@@ -38,9 +39,18 @@ export default function OverallQualityOverview() {
   return (
     <div className="max-w-7xl mx-auto p-6">
       {/* Header */}
-      <div className="mb-6 border-b-2 border-gray-400 pb-4">
-        <h1 className="text-2xl font-bold text-gray-900 uppercase">Overall Quality Overview</h1>
-        <p className="text-sm text-gray-600 mt-1">Comprehensive view of all batches and quality parameters</p>
+      <div className="mb-6 border-b-2 border-gray-400 pb-4 flex justify-between items-start">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900 uppercase">Overall Quality Overview</h1>
+          <p className="text-sm text-gray-600 mt-1">Comprehensive view of all batches and quality parameters</p>
+        </div>
+        <button
+          onClick={() => window.print()}
+          className="flex items-center space-x-1 text-sm text-blue-600 hover:text-blue-800 print:hidden"
+        >
+          <Printer className="w-4 h-4" />
+          <span>Print</span>
+        </button>
       </div>
 
       {/* Summary Cards */}

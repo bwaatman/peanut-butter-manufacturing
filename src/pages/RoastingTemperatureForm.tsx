@@ -6,6 +6,7 @@ import type { Batch, RoastingTemperatureForm } from '../types/database'
 import { Button } from '../components/ui/Button'
 import { LoadingState } from '../components/ui/LoadingState'
 import { Alert } from '../components/ui/Alert'
+import { Printer } from 'lucide-react'
 
 export default function RoastingTemperatureForm() {
   const { batchId } = useParams<{ batchId: string }>()
@@ -60,7 +61,7 @@ export default function RoastingTemperatureForm() {
     )
   }
 
-  const isTemperatureWarning = (temp: number) => temp < 137 || temp > 230
+  const isTemperatureWarning = (temp: number) => temp < 175 || temp > 180
 
   const handleAddRow = async () => {
     if (!batchId) return
@@ -136,6 +137,13 @@ export default function RoastingTemperatureForm() {
                 />
               </div>
             </div>
+            <button
+              onClick={() => window.print()}
+              className="flex items-center space-x-1 text-sm text-blue-600 hover:text-blue-800 print:hidden"
+            >
+              <Printer className="w-4 h-4" />
+              <span>Print</span>
+            </button>
           </div>
 
           {/* SECTION 2: BATCH DETAILS */}
@@ -185,7 +193,7 @@ export default function RoastingTemperatureForm() {
                         )}
                       </div>
                     </td>
-                    <td className="border border-gray-400 px-3 py-2 text-xs text-gray-500">137°C - 230°C</td>
+                    <td className="border border-gray-400 px-3 py-2 text-xs text-gray-500">175°C - 180°C</td>
                     <td className="border border-gray-400 px-3 py-2 text-sm">
                       {log.within_limit ? (
                         <span className="text-green-700 font-semibold">Yes</span>
@@ -216,14 +224,14 @@ export default function RoastingTemperatureForm() {
                         setFormData({
                           ...formData,
                           temperature: e.target.value,
-                          within_limit: temp >= 137 && temp <= 230,
+                          within_limit: temp >= 175 && temp <= 180,
                         })
                       }}
                       className="w-full border-b border-gray-300 px-2 py-1 text-sm focus:outline-none focus:border-blue-500"
-                      placeholder="137-230"
+                      placeholder="175-180"
                     />
                   </td>
-                  <td className="border border-gray-400 px-3 py-2 text-xs text-gray-500">137°C - 230°C</td>
+                  <td className="border border-gray-400 px-3 py-2 text-xs text-gray-500">175°C - 180°C</td>
                   <td className="border border-gray-400 px-3 py-2">
                     <select
                       value={formData.within_limit ? 'yes' : 'no'}
