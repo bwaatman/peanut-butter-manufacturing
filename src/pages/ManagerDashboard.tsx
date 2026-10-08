@@ -243,7 +243,7 @@ export default function ManagerDashboard() {
                 <LineChart data={roastingProfile.slice(0, 50)}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#ccc" />
                   <XAxis dataKey="form_date" stroke="#666" fontSize={12} />
-                  <YAxis stroke="#666" fontSize={12} domain={[170, 185]} />
+                  <YAxis stroke="#666" fontSize={12} domain={[190, 240]} />
                   <Tooltip />
                   <Legend />
                   <Line type="monotone" dataKey="temperature" stroke="#dc2626" strokeWidth={2} name="Temperature (°C)" dot={{ r: 4 }} />

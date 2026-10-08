@@ -61,7 +61,7 @@ export default function RoastingTemperatureForm() {
     )
   }
 
-  const isTemperatureWarning = (temp: number) => temp < 175 || temp > 180
+  const isTemperatureWarning = (temp: number) => temp < 200 || temp > 230
 
   const handleAddRow = async () => {
     if (!batchId) return
@@ -193,7 +193,7 @@ export default function RoastingTemperatureForm() {
                         )}
                       </div>
                     </td>
-                    <td className="border border-gray-400 px-3 py-2 text-xs text-gray-500">175°C - 180°C</td>
+                    <td className="border border-gray-400 px-3 py-2 text-xs text-gray-500">200°C - 230°C</td>
                     <td className="border border-gray-400 px-3 py-2 text-sm">
                       {log.within_limit ? (
                         <span className="text-green-700 font-semibold">Yes</span>
@@ -224,14 +224,14 @@ export default function RoastingTemperatureForm() {
                         setFormData({
                           ...formData,
                           temperature: e.target.value,
-                          within_limit: temp >= 175 && temp <= 180,
+                          within_limit: temp >= 200 && temp <= 230,
                         })
                       }}
                       className="w-full border-b border-gray-300 px-2 py-1 text-sm focus:outline-none focus:border-blue-500"
-                      placeholder="175-180"
+                      placeholder="200-230"
                     />
                   </td>
-                  <td className="border border-gray-400 px-3 py-2 text-xs text-gray-500">175°C - 180°C</td>
+                  <td className="border border-gray-400 px-3 py-2 text-xs text-gray-500">200°C - 230°C</td>
                   <td className="border border-gray-400 px-3 py-2">
                     <select
                       value={formData.within_limit ? 'yes' : 'no'}

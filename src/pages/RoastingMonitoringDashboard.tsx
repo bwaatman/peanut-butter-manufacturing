@@ -42,8 +42,8 @@ export default function RoastingMonitoringDashboard() {
 
   const getTemperatureStatus = (temp: number | null) => {
     if (temp === null) return 'none'
-    if (temp < 175 || temp > 180) return 'critical'
-    if (temp < 177 || temp > 178) return 'warning'
+    if (temp < 200 || temp > 230) return 'critical'
+    if (temp < 210 || temp > 220) return 'warning'
     return 'normal'
   }
 
@@ -115,7 +115,7 @@ export default function RoastingMonitoringDashboard() {
             <div className={`text-2xl font-bold ${compliance.abnormal_temperatures > 0 ? 'text-red-600' : 'text-green-600'}`}>
               {compliance.abnormal_temperatures}
             </div>
-            <div className="text-xs text-gray-500 mt-1">Out of range (175-180°C)</div>
+            <div className="text-xs text-gray-500 mt-1">Out of range (200-230°C)</div>
           </div>
           <div className="bg-white border-2 border-gray-400 p-4">
             <div className="text-xs font-semibold text-gray-700 mb-1">Suspicious Entries</div>
@@ -141,7 +141,7 @@ export default function RoastingMonitoringDashboard() {
       <div className="mb-6 bg-white border-2 border-gray-400 p-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Temperature vs Time</h2>
         <div className="mb-4 text-sm text-gray-600">
-          Expected range: 175°C - 180°C | Warning range: 177°C - 178°C | Expected interval: Every 30 minutes
+          Expected range: 200°C - 230°C | Warning range: 210°C - 220°C | Expected interval: Every 30 minutes
         </div>
         {chartData.length > 0 ? (
           <ResponsiveContainer width="100%" height={400}>
@@ -155,12 +155,12 @@ export default function RoastingMonitoringDashboard() {
               <YAxis
                 stroke="#666"
                 fontSize={12}
-                domain={[170, 185]}
+                domain={[190, 240]}
               />
               <Tooltip />
               <Legend />
-              <ReferenceArea y1={175} y2={180} fill="#dcfce7" fillOpacity={0.3} label="Safe Range" />
-              <ReferenceArea y1={177} y2={178} fill="#fef3c7" fillOpacity={0.3} label="Warning Range" />
+              <ReferenceArea y1={200} y2={230} fill="#dcfce7" fillOpacity={0.3} label="Safe Range" />
+              <ReferenceArea y1={210} y2={220} fill="#fef3c7" fillOpacity={0.3} label="Warning Range" />
               <Line
                 type="monotone"
                 dataKey="temperature"
